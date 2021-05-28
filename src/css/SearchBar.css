@@ -1,0 +1,30 @@
+.search-bar{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    /* border: 1px solid red; */
+    justify-content: space-between;
+}
+
+.sort-bar{
+    display: flex;
+    border: 1px solid green;
+    width: 500px;
+}
+
+.sort-module{
+    margin-left: 50px;
+    display: flex;
+    justify-content: flex-end;
+    width: 500px;
+    /* border: 1px solid blue; */
+}
+
+.sort-module-control{
+    margin-left: 40px;
+    /* border: 1px solid black; */
+}
+
+.sort-module-label{
+    margin-right: 10px;
+}

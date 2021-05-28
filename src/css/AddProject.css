@@ -1,0 +1,42 @@
+.add-form{
+    width: 100%;
+    height: auto;
+    margin: 100px auto 0 auto;
+    border: 1px solid steelblue;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.form-control{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 10px 0 10px 0;
+}
+
+.form-control input, .form-control textarea{
+    max-width: 100%;
+    min-width: 100%;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 17px;
+}
+
+.form-control input{
+    height: 40px;
+}
+
+.form-control textarea{
+    min-height: 100px;
+}
+
+.btn-add{
+    width: 101%;
+    margin: 10px 0 0 0;
+}
+
+.date-form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}

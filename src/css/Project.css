@@ -1,0 +1,95 @@
+.project{
+    width: 100%;
+    height: 40px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px 0 0 0;
+}
+
+/* .project:hover{
+    background-color: #aaa;
+} */
+
+.project:active{
+    background-color: #ccc;
+    transform: scale(0.999);
+}
+
+.project-name{
+    /* font-weight: bold; */
+    color:black;
+    font-weight: bold;
+    display: inline-block;
+    width: 50%;
+}
+
+.progress-bar{
+    /* display: 1; */
+    width: 400px;
+    height: 25px;
+    /* background: linear-gradient(270deg, #ff7e34, #c9dd47, #397F25); */
+    /* background: linear-gradient(270deg, #333, #397F25); */
+    background-color: green;
+    position: relative;
+}
+
+.progress{
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #333;
+}
+
+.project-detail-container{
+    width: 100%;
+    min-height: 80px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-detail-date{
+    width: 50%;
+    margin-top: 10px;
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    /* align-self: center; */
+}
+
+.project-detail-des{
+    width: 45%;
+    margin-top: 10px;
+    font-size: .9rem;
+    color: #333;
+    /* align-self: center; */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2rem;
+}
+
+.project-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-control-id{
+    width: 20%;
+}
+
+.form-control-name{
+    width: 70%;
+}
+
+.date{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    width: auto;
+    color: green;
+}

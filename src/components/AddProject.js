@@ -10,7 +10,6 @@ const AddProject = ({ onAdd, onToggle }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         onAdd({
             projectName: name,
             projectIdentifier: id,
@@ -18,7 +17,6 @@ const AddProject = ({ onAdd, onToggle }) => {
             startDate: startD,
             endDate: endD
         });
-        
     }
 
     return (
@@ -50,7 +48,7 @@ const AddProject = ({ onAdd, onToggle }) => {
                     <input type='date' value={endD} onChange={(e) => setEndD(e.target.value)}></input>
                 </div>
             </div>
-            
+
             <input type="submit" value='Save' className='btn btn-add'></input>
         </form>
     )

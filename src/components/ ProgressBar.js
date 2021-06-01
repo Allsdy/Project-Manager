@@ -1,5 +1,3 @@
-import { FaLongArrowAltLeft } from "react-icons/fa";
-
 const ProgressBar = ({ project }) => {
     const calDate = (d1, d2) => {
         let dateArr1 = d1.split('-');
@@ -21,7 +19,8 @@ const ProgressBar = ({ project }) => {
             return calDate(date1, dateCur) / calDate(date1, date2) * 100;
         }
         else if (calDate(date1, dateCur) < 0) {
-            return calDate(dateCur, date1) / calDate(dateCur, date2) * 100;
+            // return calDate(dateCur, date1) / calDate(dateCur, date2) * 100;
+            return 0;
         }
         else {
             return 100;
@@ -34,7 +33,6 @@ const ProgressBar = ({ project }) => {
     return (
         <div className='progress-bar'>
             <div className='progress' style={
-
                 progressWidth > 80 ?
                     {
                         width: 100 - progressWidth + "%",

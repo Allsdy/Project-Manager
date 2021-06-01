@@ -1,4 +1,13 @@
-const SortModule = ({ onSortName, onReverse }) => {
+import { useEffect } from 'react';
+
+const SortModule = ({ onSort, sortBy, setSortBy, sortOrder, setSortOrder }) => {
+    useEffect(() => {
+        onSort(sortBy, sortOrder);
+    }, [sortBy]);
+
+    useEffect(() => {
+        onSort(sortBy, sortOrder);
+    }, [sortOrder]);
 
     return (
         <div className='sort-module'>
@@ -12,19 +21,27 @@ const SortModule = ({ onSortName, onReverse }) => {
                     else {
                         attr = "startDate";
                     }
-                    onSortName(attr);
+                    setSortBy(attr);
                 }
-
                 }>
-                    <option >Project Name</option>
+                    <option>Project Name</option>
                     <option>Start Date</option>
                 </select>
             </div>
             <div className='sort-module-control'>
                 <label className='sort-module-label'>Sort order</label>
-                <select onChange={onReverse}>
-                    <option>Descending</option>
+                <select onChange={(e) => {
+                    let attr = "";
+                    if (e.target.value === "Ascending") {
+                        attr = "ascending";
+                    }
+                    else {
+                        attr = "descending";
+                    }
+                    setSortOrder(attr);
+                }}>
                     <option>Ascending</option>
+                    <option>Descending</option>
                 </select>
             </div>
 

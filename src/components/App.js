@@ -4,12 +4,22 @@ import Header from './Header';
 import SearchBar from './SearchBar';
 import Projects from './Projects';
 import AddProject from './AddProject';
-
 import '../css/App.css';
 
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [temp, setTemp] = useState(() => projects);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const res = await fetch('./data.json')
+      const data = await res.json();
+      setProjects(() => data);
+      setTemp(() => data);
+    }
+    fetchProjects();
+  }, []);
+  
   const [showAddBox, setShowAddBox] = useState(false);
   const [sortBy, setSortBy] = useState("projectName");
   const [sortOrder, setSortOrder] = useState("ascending");
@@ -71,6 +81,7 @@ const App = () => {
     setProjects(arr);
 
     console.log(projects);
+    console.log(temp);
   }
 
   const sort = (attr, sortOrder) => {
@@ -132,16 +143,6 @@ const App = () => {
   //   setProjects(array);
   //   setTemp(array);
   // }
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const res = await fetch('./data.json')
-      const data = await res.json();
-      setProjects(() => data);
-    }
-    fetchProjects();
-  }, []);
-
 
   return (
     <div className="container" style={

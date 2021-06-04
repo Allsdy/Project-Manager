@@ -1,13 +1,9 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 const SortModule = ({ onSort, sortBy, setSortBy, sortOrder, setSortOrder }) => {
-    useEffect(() => {
-        onSort(sortBy, sortOrder);
-    }, [sortBy]);
-
-    useEffect(() => {
-        onSort(sortBy, sortOrder);
-    }, [sortOrder]);
+    // useEffect(() => { //Do the sort everytime sortBy and sortOrder changes
+    //     onSort(sortBy, sortOrder);
+    // }, [sortBy, sortOrder]);
 
     return (
         <div className='sort-module'>

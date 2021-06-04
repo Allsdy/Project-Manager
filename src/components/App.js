@@ -7,10 +7,12 @@ import AddProject from './AddProject';
 import '../css/App.css';
 
 const App = () => {
-  const [projects, setProjects] = useState([]);
-  const [temp, setTemp] = useState(() => projects);
+  const [projects, setProjects] = useState([]); //The variable that contains the list of projects
+  const [temp, setTemp] = useState(() => projects); //The variable that contains the backup list of projects
+  const [sortBy, setSortBy] = useState("projectName"); //The variable contains the value of sortBy
+  const [sortOrder, setSortOrder] = useState("ascending"); //The variable contains the value of sortOrder
 
-  useEffect(() => {
+  useEffect(() => { //To fetch the list from data.json
     const fetchProjects = async () => {
       const res = await fetch('./data.json')
       const data = await res.json();
@@ -19,12 +21,11 @@ const App = () => {
     }
     fetchProjects();
   }, []);
-  
-  const [showAddBox, setShowAddBox] = useState(false);
-  const [sortBy, setSortBy] = useState("projectName");
-  const [sortOrder, setSortOrder] = useState("ascending");
 
-  const addProject = (p) => {
+  const [showAddBox, setShowAddBox] = useState(false); //The variable that determines if the add box is shown
+
+
+  const addProject = (p) => { //The function to add a project into the project list
     if (p.projectName === "") {
       alert("please enter a project name");
       return;
@@ -55,22 +56,22 @@ const App = () => {
     //So I have to use push method QWQ
     projects.push(p);
     setSortBy(sortBy);
-    console.log(projects);
+    // console.log(projects);
     setTemp(projects);
     // console.log(temp);
   }
 
-  const toggleShow = () => {
+  const toggleShow = () => { //Toggle the show add box
     setShowAddBox(!showAddBox);
     setSortBy("projectName");
     setSortOrder("ascending");
   }
 
-  const deleteProject = (id) => {
+  const deleteProject = (id) => { //Function to delete a project 
     setProjects(projects.filter((p) => p.projectIdentifier !== id));
   }
 
-  const searchProject = (name) => {
+  const searchProject = (name) => { //Function to search project that contains the input value
     let arr = [];
 
     for (let i = 0; i < temp.length; i++) {
@@ -79,55 +80,6 @@ const App = () => {
 
     arr = arr.filter((p) => p.projectName.includes(name))
     setProjects(arr);
-
-    console.log(projects);
-    console.log(temp);
-  }
-
-  const sort = (attr, sortOrder) => {
-    let a = [];
-    if(sortOrder === "descending"){
-      if (attr === "projectName") {
-        a = (projects.sort((a, b) => {
-          if (a.projectName > b.projectName) return -1;
-          else return 1;
-        }));
-      }
-      else {
-        a = (projects.sort((a, b) => {
-          let date1 = new Date(a.startDate);
-          let date2 = new Date(b.startDate);
-  
-          if (date1 > date2) return -1;
-          else return 1;
-        }));
-      }
-    }
-    else{
-      if (attr === "projectName") {
-        a = (projects.sort((a, b) => {
-          if (a.projectName > b.projectName) return 1;
-          else return -1;
-        }));
-      }
-      else {
-        a = (projects.sort((a, b) => {
-          let date1 = new Date(a.startDate);
-          let date2 = new Date(b.startDate);
-  
-          if (date1 > date2) return 1;
-          else return -1;
-        }));
-      }
-    }
-
-    let array = [];
-    for (let i = 0; i < a.length; i++) {
-      array.push(a[i]);
-    }
-
-    setProjects(array);
-    setTemp(array);
   }
 
   // const reverseProjects = () => {
@@ -156,9 +108,10 @@ const App = () => {
     }>
       <Header onToggle={toggleShow} txtChange={showAddBox} />
       {showAddBox && <AddProject onAdd={addProject} onToggle={toggleShow} />}
-      {showAddBox || <SearchBar onSearch={searchProject} onSort={sort}
+      {showAddBox || <SearchBar onSearch={searchProject}
         setSortBy={setSortBy} sortBy={sortBy} sortOrder={sortOrder} setSortOrder={setSortOrder} />}
-      {showAddBox || <Projects projects={projects} deletePro={deleteProject} sortBy={sortBy} setSortBy={setSortBy} />}
+      {showAddBox || <Projects projects={projects} deletePro={deleteProject} sortBy={sortBy} sortOrder={sortOrder}
+        setSortBy={setSortBy} setSortOrder={setSortOrder} />}
     </div>
   );
 }
